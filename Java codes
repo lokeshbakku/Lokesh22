@@ -62,3 +62,175 @@ public class Book {
         System.out.println("ISBN: " + book2.getISBN());
     }
 }
+
+
+
+
+
+
+
+another code for this one
+
+import com.pi4j.io.gpio.*;
+
+public class GpioControllerExample {
+
+    public static void main(String[] args) throws InterruptedException {
+        // create gpio controller
+        final GpioController gpio = GpioFactory.getInstance();
+
+        // provision gpio pin as an output pin and turn on
+        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
+        pin.high();
+
+        // toggle pin
+        while (true) {
+            pin.toggle();
+            Thread.sleep(1000); // sleep for 1 second
+        }
+
+        // shutdown gpio
+        gpio.shutdown();
+    }
+}
+
+
+another one for the last  one 
+Algorithm: 
+1.Start: 
+2.Import necessary libraries (com.pi4j.io.gpio.*) for GPIO manipulation. 
+3.Set up a GPIO pin as input or output using the GpioFactory and GpioController. 
+4.For an input pin: 
+5.Create a GpioPinDigitalInput instance using 
+GpioFactory.getInstance().provisionDigitalInputPin(). 
+6.Optionally, add listeners for events such as pin state changes. 
+7.For an output pin: 
+8.Create a GpioPinDigitalOutput instance using 
+GpioFactory.getInstance().provisionDigitalOutputPin(). 
+9.Optionally, set initial state (high or low) using setState() method. 
+10.Perform desired operations with the GPIO pins, such as reading input state or setting output state. 
+11.Release GPIO resources when done. 12. End import com.pi4j.io.gpio.*; 
+ 
+public class GPIOExample {     public static void main(String[] args) throws InterruptedException { 
+        // Create a GPIO controller         final GpioController gpio = GpioFactory.getInstance(); 
+ 
+        // Configure pin 1 as input 
+        final GpioPinDigitalInput inputPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_01, PinPullResistance.PULL_DOWN); 
+ 
+        // Configure pin 2 as output         final GpioPinDigitalOutput outputPin = 
+gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyLED", PinState.LOW); 
+ 
+        // Read the state of the input pin 
+        System.out.println("Input Pin State: " + inputPin.getState()); 
+ 
+        // Toggle the state of the output pin every second         while (true) {             outputPin.toggle();             Thread.sleep(1000); 
+        } 
+ 
+        // Release GPIO resources when done 
+        // gpio.shutdown(); 
+    } 
+} 
+
+
+
+
+
+
+ afternoon codes frst  one 
+
+// Base class Fruit
+class Fruit {
+    private String name;
+    private String color;
+
+    // Constructor
+    public Fruit(String name, String color) {
+        this.name = name;
+        this.color = color;
+    }
+
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+}
+
+// Subclass Apple extending Fruit
+class Apple extends Fruit {
+    private String variety;
+
+    // Constructor
+    public Apple(String name, String color, String variety) {
+        super(name, color); // Call superclass constructor
+        this.variety = variety;
+    }
+
+    // Getter method for variety
+    public String getVariety() {
+        return variety;
+    }
+}
+
+// Subclass Banana extending Fruit
+class Banana extends Fruit {
+    private boolean isRipe;
+
+    // Constructor
+    public Banana(String name, String color, boolean isRipe) {
+        super(name, color); // Call superclass constructor
+        this.isRipe = isRipe;
+    }
+
+    // Getter method for ripeness
+    public boolean isRipe() {
+        return isRipe;
+    }
+}
+
+public class FruitHierarchy {
+    public static void main(String[] args) {
+        // Creating objects of Apple and Banana
+        Apple apple = new Apple("Apple", "Red", "Gala");
+        Banana banana = new Banana("Banana", "Yellow", true);
+
+        // Printing details of Apple
+        System.out.println("Apple:");
+        System.out.println("Name: " + apple.getName());
+        System.out.println("Color: " + apple.getColor());
+        System.out.println("Variety: " + apple.getVariety());
+
+        // Printing details of Banana
+        System.out.println("\nBanana:");
+        System.out.println("Name: " + banana.getName());
+        System.out.println("Color: " + banana.getColor());
+        System.out.println("Is Ripe: " + banana.isRipe());
+    }
+}
+
+
+afternoon second one ;
+temp 
+
+
+public class TemperatureConverter {
+    // Method to convert Celsius to Fahrenheit
+    public static double celsiusToFahrenheit(double celsius) {
+        return (celsius * 9/5) + 32;
+    }
+
+    public static void main(String[] args) {
+        // Analog sensor reading in Celsius
+        double sensorReadingCelsius = 25.0; // Example reading, replace with actual sensor reading
+
+        // Convert Celsius to Fahrenheit
+        double sensorReadingFahrenheit = celsiusToFahrenheit(sensorReadingCelsius);
+
+        // Print the converted temperature values
+        System.out.println("Sensor Reading (Celsius): " + sensorReadingCelsius + " °C");
+        System.out.println("Sensor Reading (Fahrenheit): " + sensorReadingFahrenheit + " °F");
+    }
+}
